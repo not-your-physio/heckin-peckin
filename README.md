@@ -7,7 +7,7 @@
 | Button | Arrow | Action |
 | ------ | ----- | ------ |
 | D | ➡️ | Walk right |
-| Space | | Jump |
+| W/Space | ⬆️ | Jump |
 | A | ⬅️ | Walk left |
 
 ### Extras
