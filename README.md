@@ -1,16 +1,20 @@
 # 🐓 Heckin' Peckin'
 
 ## Controls
-To walk to right = D/➡️
 
-To walk to left = A/⬅️
+### Basics
 
-To jump = Space bar (hold to jump higher)
+| Button | Arrow | Action |
+| ------ | ----- | ------ |
+| D | ➡️ | Walk right |
+| Space | | Jump |
+| A | ⬅️ | Walk left |
 
-To double jump = Double tap space bar
+### Extras
 
-To wall jump = Jump onto wall (space bar), then use right/left between walls
-
+- Hold space bar to **jump higher**
+- Double tap space bar to **double jump**
+- Jump into a wall, then use space and a direction to **wall jump**
 
 ## Credits
 
