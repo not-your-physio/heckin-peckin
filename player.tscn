@@ -1,0 +1,126 @@
+[gd_scene load_steps=15 format=3 uid="uid://c2uv36jsuyjau"]
+
+[ext_resource type="Texture2D" uid="uid://86go0scp1ewx" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Chicken Sprites.png" id="1_5lgbn"]
+[ext_resource type="Script" path="res://player.gd" id="1_6aq88"]
+[ext_resource type="Resource" uid="uid://djxdqgnfmt6ut" path="res://DefaultMovementData.tres" id="2_l8okp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry3un"]
+atlas = ExtResource("1_5lgbn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7cxx"]
+atlas = ExtResource("1_5lgbn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mteh5"]
+atlas = ExtResource("1_5lgbn")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ktgh"]
+atlas = ExtResource("1_5lgbn")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc3cm"]
+atlas = ExtResource("1_5lgbn")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo77f"]
+atlas = ExtResource("1_5lgbn")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdqsv"]
+atlas = ExtResource("1_5lgbn")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln7ro"]
+atlas = ExtResource("1_5lgbn")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qo7aj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry3un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7cxx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mteh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ktgh")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc3cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo77f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdqsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln7ro")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2irq5"]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7hb3"]
+radius = 6.08276
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+floor_snap_length = 3.0
+safe_margin = 0.1
+script = ExtResource("1_6aq88")
+movement_data = ExtResource("2_l8okp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -13)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qo7aj")
+animation = &"idle"
+frame_progress = 0.361859
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_2irq5")
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="WallJumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_l7hb3")
+
+[node name="FallingTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]

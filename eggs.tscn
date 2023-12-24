@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://clqgd3c23v0yk"]
+
+[ext_resource type="Texture2D" uid="uid://cbletp3r0cufk" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Egg item.png" id="1_hu3ce"]
+[ext_resource type="PackedScene" uid="uid://6jc36t0w8bhd" path="res://hazard_area.tscn" id="2_ttphx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u2sql"]
+radius = 5.0
+height = 14.0
+
+[node name="Eggs" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -8)
+texture = ExtResource("1_hu3ce")
+
+[node name="HazardArea" parent="." instance=ExtResource("2_ttphx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
+position = Vector2(8, -8)
+shape = SubResource("CapsuleShape2D_u2sql")

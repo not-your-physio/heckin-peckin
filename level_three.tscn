@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8guqhh4g4a71"]
+
+[ext_resource type="PackedScene" uid="uid://cd11k0sw55les" path="res://world.tscn" id="1_rfajr"]
+[ext_resource type="PackedScene" uid="uid://cw28jrjfc28on" path="res://chest.tscn" id="2_o2474"]
+
+[node name="World" instance=ExtResource("1_rfajr")]
+
+[node name="Player" parent="." index="0"]
+position = Vector2(224, 67)
+
+[node name="LevelTileMap" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(262158, 196608, 3, 327694, 196608, 5, 327693, 65536, 5, 262157, 65536, 3, -65526, 196608, 5, -65527, 65536, 5, -131063, 65536, 3, -131062, 196608, 3, -458746, 196608, 5, -458747, 65536, 5, -524283, 65536, 3, -524282, 196608, 3, 327679, 65536, 3, 262144, 196608, 3, 327680, 196608, 5, 393215, 65536, 5, -458753, 65536, 4, -393217, 131072, 4, -327681, 131072, 4, -393216, 131072, 4, -458752, 131072, 4, -524288, 196608, 4, -262145, 131072, 4, -327680, 131072, 4, -327682, 131072, 4, -393215, 131072, 4, -393219, 65536, 3, -458750, 196608, 3, -524289, 65536, 4, -589824, 196608, 4, -393218, 131072, 4, -458751, 131072, 4, -196609, 65536, 5, -262144, 196608, 5, -262146, 65536, 5, -327683, 65536, 5, -393214, 196608, 5, -327679, 196608, 5, -589825, 65536, 3, -655360, 196608, 3)
+
+[node name="Chest" parent="." index="4" instance=ExtResource("2_o2474")]
+position = Vector2(1, 59)
+
+[node name="Chest2" parent="." index="5" instance=ExtResource("2_o2474")]
+position = Vector2(0, -166)
